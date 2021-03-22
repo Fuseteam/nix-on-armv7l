@@ -28,8 +28,7 @@ jobs:
           submodules: true
       - name: Install dependencies
         run: |
-          git clone https://github.com/nixos/nix
-          cd /nix
+          cd nix
           git checkout 2.3.7
           echo "extra-substituters = https://thefloweringash-armv7.cachix.org" >> /etc/nix/nix.conf && \
           echo "http-connections = 5" >> /etc/nix/nix.conf && \
