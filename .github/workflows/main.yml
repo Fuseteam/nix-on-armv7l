@@ -28,4 +28,4 @@ jobs:
       - uses: cachix/install-nix-action@v12
       - name: build nix
         run: |
-          nix-build nix/default.nix -A binaryTarball --arg nixpkgs "builtins.fetchTarball https://github.com/NixOS/nix/archive/refs/tags/2.3.10.tar.gz" --arg systems '["armv7l-linux"]' --show-trace || true
+          nix-build nix/default.nix --arg nixpkgs "builtins.fetchTarball https://github.com/NixOS/nix/archive/refs/tags/2.3.10.tar.gz" --arg systems '["armv7l-linux"]' --show-trace
