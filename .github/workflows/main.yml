@@ -26,7 +26,6 @@ jobs:
           # Fetch the whole tree so git describe works
           fetch-depth: 0
           submodules: true
-      - name: Install dependencies
+      - name: build nix
         run: |
-          nix-build -E "builtins.fetchTarball https://github.com/NixOS/nix/archive/refs/tags/2.3.10.tar.gz" || true
-          nix-build nix/release.nix -A binaryTarball --arg nixpkgs "builtins.fetchTarball https://github.com/NixOS/nix/archive/refs/tags/2.3.10.tar.gz" --arg systems '["armv7l-linux"]' --show-trace || true
+          nix-build nix/default.nix -A binaryTarball --arg nixpkgs "builtins.fetchTarball https://github.com/NixOS/nix/archive/refs/tags/2.3.10.tar.gz" --arg systems '["armv7l-linux"]' --show-trace || true
