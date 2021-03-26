@@ -29,9 +29,5 @@ jobs:
       - name: Install dependencies
         run: |
           cd nix
-          sudo echo "extra-substituters = https://thefloweringash-armv7.cachix.org" >> /etc/nix/nix.conf && \
-          sudo echo "http-connections = 5" >> /etc/nix/nix.conf && \
-          sudo echo "trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= thefloweringash-armv7.cachix.org-1:v+5yzBD2odFKeXbmC+OPWVqx4WVoIVO6UXgnSAWFtso=" >> /etc/nix/nix.conf
           nix-build -E "builtins.fetchTarball https://github.com/NixOS/nix/archive/refs/tags/2.3.10.tar.gz" || true
-          sudo echo "system = armv7l-linux" >> /etc/nix/nix.conf
           nix-build release.nix -A binaryTarball --arg nixpkgs "builtins.fetchTarball https://github.com/NixOS/nix/archive/refs/tags/2.3.10.tar.gz" --arg systems '["armv7l-linux"]' --show-trace || true
